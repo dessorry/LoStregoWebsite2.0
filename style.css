@@ -220,6 +220,7 @@ p {
 	list-style: none;
 	display: flex;
     flex-direction: row;
+	flex-wrap: wrap;
 }
 .banner-text ul li {
 	display: inline-block;

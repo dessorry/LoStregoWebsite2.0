@@ -1,0 +1,510 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;800&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: #000e3e;
+                color: #fff;
+                font-family: 'Jost', sans-serif;
+                font-size: 30px;
+                padding: 30px;
+            }
+            #image {
+                width: 1080px;
+                height: 1080px;
+                position: relative;
+                margin: auto;
+                background-color: #000e3e;
+            }
+            #bg {
+                width: 1080px;
+                height: 1080px;
+                background-image: url("ademola.jpg");
+                background-position: 42% 7%;
+                background-repeat: no-repeat;
+                background-size: 245%;
+            }
+            #gradient {
+                position: absolute;
+                width: 1082px;
+                height: 1082px;
+                background-image: linear-gradient(180deg, transparent 50%, #000e3e);
+            }
+            #text {
+                position: absolute;
+                width: 1080px;
+                height: 1080px;
+                z-index: 2
+            }
+            #title {
+                font-family: 'Jost', sans-serif;
+	            font-size: 86px;
+                color: #fff;
+                text-align: center;
+                margin-top: 70%
+            }
+            #subtitle {
+                font-family: 'Jost', sans-serif;
+	            font-size: 50px;
+                color: #fff;
+                text-align: center;
+                font-weight: 200;
+            }
+            #logo {
+                position: absolute;
+                z-index: 3;
+                top: 20px;
+                right: 10px;
+            }
+            .inputText {
+                background-color: #114385;
+                border: 0px;
+                color: #fff;
+                font-size: 30px;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border-radius: 50px;
+                width: 100%
+            }
+            .slider {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 15px;
+                border-radius: 5px;  
+                background: #114385;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+            }
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%; 
+                background: #2ec4b6;
+                cursor: pointer;
+            }
+            .slider::-moz-range-thumb {
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #2ec4b6;
+                cursor: pointer;
+            }
+            button {
+                text-align: center;
+                color: #fff;
+                border: 8px solid #fff;
+                border-radius: 50px;
+                background-color: #2ec4b6;
+                width: 300px;
+                height: 100px;
+                font-size: 40px;
+                font-weight: bold;
+            }
+            .block {
+                padding-bottom: 30px;
+            }
+            .center {
+                text-align: center
+            }
+            .scroll {
+                overflow: scroll
+            }
+            .radio {
+                border: none;
+                appearance: none;
+                border-radius: 50%;
+                margin-right: 20px;
+                margin-left: 10px;
+                position: relative;
+                top: 10px;
+                width: 40px;
+                height: 40px;
+                background-color: #114385;
+            }
+            .radio:checked {
+                border: none;
+                background-color: #2ec4b6;
+            }
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 60px;
+                height: 34px;
+            }
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .sliderSwitch {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #114385;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+            .sliderSwitch:before {
+                position: absolute;
+                content: "";
+                height: 26px;
+                width: 26px;
+                left: 4px;
+                bottom: 4px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+            input:checked + .sliderSwitch {
+                background-color: #2ec4b6;
+            }
+            input:focus + .sliderSwitch {
+                box-shadow: 0 0 1px #2ec4b6;
+            }
+            input:checked + .sliderSwitch:before {
+                -webkit-transform: translateX(26px);
+                -ms-transform: translateX(26px);
+                transform: translateX(26px);
+            }
+            .sliderSwitch.round {
+                border-radius: 34px;
+            }
+            .sliderSwitch.round:before {
+                border-radius: 50%;
+            }
+            #luogoBlock {
+                display: none;
+            }
+            #scomparsoBlock {
+                display: none;
+            }
+            #etaBlock {
+                display: none;
+            }
+            #altezzaBlock {
+                display: none;
+            }
+            #occhiBlock {
+                display: none;
+            }
+            #capelliBlock {
+                display: none;
+            }
+            #nome {
+                display: none;
+            }
+            #tabella {
+                display: none;
+            }
+            #fine {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                width: 200px;
+                display: none;
+            }
+            #nome {
+                position: absolute;
+                left: 540px;
+                background-color: #2ec4b6;
+                width: 520px;
+                height: 80px;
+                line-height: 80px;
+                top: 0px;
+                text-align: left;
+                padding-left: 20px;
+                font-size: 40px;
+                font-weight: bold;
+                font-family: 'jost';
+            }
+            #tabella {
+                position: absolute;
+                top: 100px;
+                left: 540px;
+                padding-left: 20px;
+                padding-right: 20px;
+                width: 500px;
+                margin-top: 20px;
+            }
+            .riga {
+                display: flex;
+                flex-direction: row;
+                font-size: 40px;
+                border-bottom: 1px solid #fff;
+                width: 100%;
+                justify-content: space-between;
+                font-weight: 100;
+                margin-bottom: 20px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+        <script type="text/javascript">
+            function downloadImage() {
+                var container = document.getElementById("image");
+                html2canvas(container, { allowTaint: true, imageTimeout: 15000, useCORS: true }).then(function (canvas) {
+                    document.getElementById("esito").innerHTML = "canvas";
+                    var link = document.createElement("a");
+                    document.body.appendChild(link);
+                    link.download = "html_image.jpg";
+                    link.href = canvas.toDataURL("image/jpg");
+                    document.getElementById("esito").innerHTML = document.getElementById("esito").innerHTML + " todataurl";
+                    link.target = '_blank';
+                    link.click();
+                });
+            }
+            function isUpperCase(str) {
+                return str === str.toUpperCase();
+            }
+            function updateTitle(title) {
+                var tit = title.split(" ");
+                var title = "";
+                for (var i = 0; i < tit.length; i++) {
+                    if (isUpperCase(tit[i])) {
+                        title = title + "<b>" + tit[i] + "</b> ";
+                    } else {
+                        title = title + tit[i] + " ";
+                    }
+                }
+                document.getElementById("title").innerHTML = title;
+                document.getElementById("nome").innerHTML = title.toUpperCase();
+                search();
+            }
+            function search() {
+                document.getElementById("results").innerHTML = "";
+                var query = document.getElementById("titleIn").value.toLowerCase();
+                query = query.replace(" ", "+");
+                var dimension = "huge";
+                if (document.getElementById("xlarge").checked)
+                    dimension = "xlarge";
+                else if (document.getElementById("xxlarge").checked)
+                    dimension = "xxlarge";
+                var date = "w1";
+                if (document.getElementById("w4").checked)
+                    date = "w4";
+                else if (document.getElementById("w8").checked)
+                    date = "w8";
+                else if (document.getElementById("w12").checked)
+                    date = "w12";
+                var google = document.createElement('script');
+                google.src = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDkavwNRsafqkhIClz29rrC4cC6xwWJU8M&cx=a4f68c438cc914121&dateRestrict=" + date + "&imgSize=" + dimension + "&searchType=image&q=" + query + "&lr=lang_it&callback=hndlr";
+                document.getElementById("results").appendChild(google);
+                var google2 = document.createElement('script');
+                google2.src = "https://www.googleapis.com/customsearch/v1?key=AIzaSyDkavwNRsafqkhIClz29rrC4cC6xwWJU8M&cx=a4f68c438cc914121&dateRestrict=" + date + "&imgSize=" + dimension + "&searchType=image&q=" + query + "&lr=lang_it&start=10&callback=hndlr";
+                document.getElementById("results").appendChild(google2);
+            }
+            function updateSubtitle(subtitle) {
+                document.getElementById("subtitle").innerHTML = subtitle;
+            }
+            function updateEta(value) {
+                document.getElementById("eta").innerHTML = value;
+            }
+            function updateAltezza(value) {
+                document.getElementById("altezza").innerHTML = value;
+            }
+            function updateOcchi(value) {
+                document.getElementById("occhi").innerHTML = value;
+            }
+            function updateCapelli(value) {
+                document.getElementById("capelli").innerHTML = value;
+            }
+            function updateScomparso(value) {
+                document.getElementById("scomparso").innerHTML = value;
+            }
+            function updateLuogo(value) {
+                document.getElementById("luogo").innerHTML = value;
+            }
+            function updateZoom(zoom) {
+                document.getElementById("bg").style.backgroundSize = zoom + "%";
+            }
+            function updatePosX(posX) {
+                document.getElementById("bg").style.backgroundPositionX = posX + "%";
+            }
+            function updatePosY(posY) {
+                document.getElementById("bg").style.backgroundPositionY = posY + "%";
+            }
+            function hndlr(response) {
+                for (var i = 0; i < response.items.length; i++) {
+                    var item = response.items[i];
+                    var img = document.createElement('img');
+                    img.src = item.image.thumbnailLink;
+                    let link = item.link;
+                    img.addEventListener('click', function handleClick(event) {
+                        document.getElementById("bg").style.backgroundImage = "url(" + link + ")";
+                    });
+                    document.getElementById("results").append(img);
+                }
+            }
+            function changeMode() {
+                if (document.getElementById("checkbox").checked) {
+                    document.getElementById("text").style.display = "none";
+                    document.getElementById("gradient").style.display = "none";
+                    document.getElementById("subTitleBlock").style.display = "none";
+                    document.getElementById("etaBlock").style.display = "block";
+                    document.getElementById("altezzaBlock").style.display = "block";
+                    document.getElementById("capelliBlock").style.display = "block";
+                    document.getElementById("occhiBlock").style.display = "block";
+                    document.getElementById("luogoBlock").style.display = "block";
+                    document.getElementById("scomparsoBlock").style.display = "block";
+                    document.getElementById("luogoBlock").style.display = "block";
+                    document.getElementById("nome").style.display = "block";
+                    document.getElementById("tabella").style.display = "block";
+                    document.getElementById("fine").style.display = "block";
+                    document.getElementById("logo").style.left = "10px";
+                    document.getElementById("logo").style.right = "auto";
+                    document.getElementById("bg").style.width = "540px";
+                } else {
+                    document.getElementById("text").style.display = "block";
+                    document.getElementById("gradient").style.display = "block";
+                    document.getElementById("subTitleBlock").style.display = "block";
+                    document.getElementById("etaBlock").style.display = "none";
+                    document.getElementById("altezzaBlock").style.display = "none";
+                    document.getElementById("capelliBlock").style.display = "none";
+                    document.getElementById("occhiBlock").style.display = "none";
+                    document.getElementById("scomparsoBlock").style.display = "none";
+                    document.getElementById("luogoBlock").style.display = "none";
+                    document.getElementById("nome").style.display = "none";
+                    document.getElementById("tabella").style.display = "none";
+                    document.getElementById("fine").style.display = "none";
+                    document.getElementById("logo").style.right = "10px";
+                    document.getElementById("logo").style.left = "auto";
+                    document.getElementById("bg").style.width = "1080px";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="block">
+            <label>Modalità chi l'ha visto?</label><br/>
+            <label class="switch">
+                <input type="checkbox" id="checkbox" onclick="changeMode()">
+                <span class="sliderSwitch round"></span>
+            </label>
+        </div>
+        <div class="block" id="results">
+           
+        </div>
+        <div class="block">
+            <label for="xlarge">xlarge</label>
+            <input type="radio" id="xlarge" name="dimension" value="xlarge" class="radio" onclick="search()">
+            <label for="html">xxlarge</label>
+            <input type="radio" id="xxlarge" name="dimension" value="xxlarge" class="radio" onclick="search()">
+            <label for="css">huge</label>
+            <input type="radio" id="huge" name="dimension" value="huge" class="radio" checked="checked" onclick="search()">
+        </div>
+        <div class="block">
+            <label for="xlarge">1 sett.</label>
+            <input type="radio" id="w1" name="data" value="w1" class="radio" checked="checked" onclick="search()">
+            <label for="html">4 sett.</label>
+            <input type="radio" id="w4" name="data" value="w4" class="radio" onclick="search()">
+            <label for="css">8 sett.</label>
+            <input type="radio" id="w8" name="data" value="w8" class="radio" onclick="search()">
+            <label for="css">12 sett.</label>
+            <input type="radio" id="w12" name="data" value="w12" class="radio" onclick="search()">
+        </div>
+        <div class="block">
+            <label for="titleIn">Titolo:</label><br/>
+            <input type="text" id="titleIn" name="titleIn" onchange="updateTitle(this.value)" class="inputText">
+        </div>
+        <div class="block" id="subTitleBlock">
+            <label for="subtitleIn">Sottotitolo:</label><br/>
+            <input type="text" id="subtitleIn" name="subtitleIn" onchange="updateSubtitle(this.value)" class="inputText">
+        </div>
+        <div class="block" id="etaBlock">
+            <label for="etaIn">Età:</label><br/>
+            <input type="text" id="etaIn" name="etaIn" onchange="updateEta(this.value)" class="inputText">
+        </div>
+        <div class="block" id="altezzaBlock">
+            <label for="altezzaIn">Altezza:</label><br/>
+            <input type="text" id="altezzaIn" name="altezzaIn" onchange="updateAltezza(this.value)" class="inputText">
+        </div>
+        <div class="block" id="occhiBlock">
+            <label for="occhiIn">Occhi:</label><br/>
+            <input type="text" id="occhiIn" name="occhiIn" onchange="updateOcchi(this.value)" class="inputText">
+        </div>
+        <div class="block" id="capelliBlock">
+            <label for="capelliIn">Capelli:</label><br/>
+            <input type="text" id="capelliIn" name="capelliIn" onchange="updateCapelli(this.value)" class="inputText">
+        </div>
+        <div class="block" id="scomparsoBlock">
+            <label for="scomparsoIn">Scomparso:</label><br/>
+            <input type="text" id="scomparsoIn" name="scomparsoIn" onchange="updateScomparso(this.value)" class="inputText">
+        </div>
+        <div class="block" id="luogoBlock">
+            <label for="luogoIn">Luogo:</label><br/>
+            <input type="text" id="luogoIn" name="luogoIn" onchange="updateLuogo(this.value)" class="inputText">
+        </div>
+        <div class="block">
+            <label>Zoom:</label><br/>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="300" value="100" class="slider" id="zoom" onchange="updateZoom(this.value)">
+            </div>
+        </div>
+        <div class="block">
+            <label>Pos X:</label><br/>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="50" class="slider" id="posx" onchange="updatePosX(this.value)">
+            </div>
+        </div>
+        <div class="block">
+            <label>Pos Y:</label><br/>
+            <div class="slidecontainer">
+                <input type="range" min="0" max="100" value="50" class="slider" id="posy" onchange="updatePosY(this.value)">
+            </div>
+        </div>
+        <div class="block center">
+            <button type="button" onclick="downloadImage()">Scarica</button>
+        </div>
+        <div id="esito"></div>
+        <div class="block center scroll">
+            <div id="image">
+                <img src="https://www.lostregodelfantacalcio.netsons.org/images/logo.png" id="logo"/>
+                <div id="text">
+                    <div id="title">Titolo</div>
+                    <div id="subtitle">sottotitolo</div>
+                </div>
+                <div id="gradient"></div>
+                <div id="bg">
+                </div>
+                <div id="nome"></div>
+                <div id="tabella">
+                    <div class="riga">
+                        <div class="etichetta">Età:</div>
+                        <div class="valore" id="eta"></div>
+                    </div>
+                    <div class="riga">
+                        <div class="etichetta">Altezza:</div>
+                        <div class="valore" id="altezza"></div>
+                    </div>
+                    <div class="riga">
+                        <div class="etichetta">Occhi:</div>
+                        <div class="valore" id="occhi"></div>
+                    </div>
+                    <div class="riga">
+                        <div class="etichetta">Capelli:</div>
+                        <div class="valore" id="capelli"></div>
+                    </div>
+                    <div class="riga">
+                        <div class="etichetta">Scomparso:</div>
+                        <div class="valore" id="scomparso"></div>
+                    </div>
+                    <div class="riga">
+                        <div class="etichetta">Luogo:</div>
+                        <div class="valore" id="luogo"></div>
+                    </div>
+                </div>
+                <img src="https://www.lostregodelfantacalcio.netsons.org/social/fine.png" id="fine"/>
+            </div>
+        </div>
+    </body>
+</html>
